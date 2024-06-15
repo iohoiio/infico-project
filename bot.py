@@ -1,3 +1,4 @@
+
 import telebot
 from telebot import types
 import requests
@@ -6,13 +7,17 @@ API_TOKEN = '7362462048:AAEiZlTdU4GRGIKW39aD6_dEGD6nS2jowiY'
 CHANNEL_USERNAME = '@INFICOTG'
 bot = telebot.TeleBot(API_TOKEN)
 
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "Welcome to INFICO Bot!")
+
 # Симуляция базы данных
 user_data = {}
 
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = types.InlineKeyboardMarkup()
-    web_app_info = types.WebAppInfo("https://git.heroku.com/infico.git")  # URL вашего веб-приложения
+    web_app_info = types.WebAppInfo("https://git.heroku.com/infico.git")  # URL вашего веб-приложенияh
     web_app_button = types.InlineKeyboardButton(text="Open Web App", web_app=web_app_info)
     markup.add(web_app_button)
     bot.send_message(message.chat.id, "Welcome! Click the button below to open the web app.", reply_markup=markup)
