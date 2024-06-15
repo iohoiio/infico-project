@@ -12,7 +12,7 @@ user_data = {}
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = types.InlineKeyboardMarkup()
-    web_app_info = types.WebAppInfo(" https://iohoiio.github.io/infico/")  # URL вашего веб-приложения
+    web_app_info = types.WebAppInfo("https://git.heroku.com/infico.git")  # URL вашего веб-приложения
     web_app_button = types.InlineKeyboardButton(text="Open Web App", web_app=web_app_info)
     markup.add(web_app_button)
     bot.send_message(message.chat.id, "Welcome! Click the button below to open the web app.", reply_markup=markup)
